@@ -1,0 +1,105 @@
+<script>
+    alert("Welcome to this shitty version of Battleship, so please enter the data that will be requested in a moment")
+    let Player1 = prompt("Please enter the Player's 1 name:");
+    let Player2 = prompt("Please enter the Player's 2 name:");
+    console.log("ALLRIGHT LADIES AND GENTLEMEN THIS BATTLE WILL BE BETWEEN "+Player1+" AND "+Player2+"!"+"\n"+"I'M YOUR PRESENTATOR REN HANAMURA (I'm also the programmer os this...Â¿thing?) AND IN NO TIME IT WILL BE GENERATED THE BOARD FOR THIS MATCH");
+    alert("Deploy your ships "+ Player1)
+    let P1 = Boardone(Player1);
+    alert("Deploy your ships "+ Player2)
+    let P2 = Boardtwo(Player2);
+    let game = TurnsNShoots(Player1, P1, P2, Player2);
+    console.log(game);
+
+    function Boardone(Player1){
+        let Board1 = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]"];
+        let spawnp = 0;
+        for(let i = 0; i < Board1.length;i++){
+            if (spawnp < 3) {
+                let boat1 = confirm("You are in ther " + (i+1) + " position, do you want deploy here?");
+                if (boat1 == true){
+                    Board1[i] = "[_/]";
+                    alert("The ship for "+Player1+" will be generated");
+                    spawnp++;
+                }
+            }
+        }
+            console.log(Player1+"'s"+" board:"+"\n");
+            console.log(Board1);
+            return Board1;
+        }
+    
+    function Boardtwo(Player2){
+        let Board2 = ["[ ]", "[ ]", "[ ]", "[ ]", "[ ]"];
+        let spawneny = 0;
+        for(let i = 0; i < Board2.length;i++){
+            if (spawneny < 3) {
+                let boat2 = confirm("You are in ther " + (i+1) + " position, do you want deploy here?");
+                    if (boat2 == true){
+                        Board2[i] = "[_/]";
+                        alert("The ship for "+Player2+" will be generated");
+                        spawneny++;
+                    }
+                }
+            }
+            console.log(Player2+"'s"+" board:"+"\n");
+            console.log(Board2);
+            return Board2;
+        }
+
+function TurnsNShoots(Player1,P1 ,P2 , Player2){
+    var DaChampion = 0;
+    var turn = 0;
+    var P1P = 0;
+    var P2P = 0;
+    while (turn < 10 && DaChampion == 0){
+        let Player1Turn = true
+        let Player2Turn = false
+        while (Player1Turn == true){
+            let P1Shoot = prompt("Please enter the position you want to shoot:");
+            if (P1[P1Shoot] == "[_/]"){
+                P1[P1Shoot] = "[X]";
+                P1P++;
+                alert("An enemy for Calli");
+                console.log(Player1+"'s"+" board:"+"\n");
+                console.log(P1);
+                if (P1P == 3){
+                    alert("Oh baby a triple kill! \n Congratulations " + Player1 + "!");
+                    DaChampion = 1;
+                }
+            }
+            else{
+                P1[P1Shoot] = "[O]";
+                alert("Geez, you missed");
+                console.log(Player1+"'s"+" board:"+"\n");
+                console.log(P1);
+            }
+            Player1Turn = false;
+            Player2Turn = true;
+        }
+        while (Player2Turn == true){
+            let P2Shoot = prompt("Please enter the position you want to shoot:");
+            if (P2[P2Shoot] == "[\_]"){
+                P2[P2Shoot] = "[X]";
+                P2P++;
+                alert("More work to Death-Sensei");
+                console.log(Player2+"'s"+" board:"+"\n");
+                console.log(P2);
+                if (P2P == 3){
+                    alert("GG kid \n ur the best " + Player2 + "!");
+                    DaChampion = 1;
+                }
+            }
+            else{
+                P2[P2Shoot] = "[O]";
+                alert("practice your aim fella");
+                console.log(Player2+"'s"+" board:"+"\n");
+                console.log(P2);
+            }
+            Player1Turn = true;
+            Player2Turn = false;
+        }
+        turn++;
+    }
+    return "Created by Ren Hanamura";
+}
+</script>
